@@ -1,16 +1,22 @@
 <div ng-controller="documentCtrl" ng-init="list()">
-    <form>
-        <input ng-model="newDoc.title"></input>
-        <button ng-click="create(newDoc)">Add</button>
-    </form>
-    
-    <ul ng-repeat="doc in documents">
-        <li ng-click="enableEditMode(doc)" focus-input>
-            <p ng-hide="editingDocId==doc.id">{{doc.title}}</p>  
-            <input ng-model="doc.newTitle" ng-show="editingDocId==doc.id" value="{{doc.title}}"></input>
-            <button ng-click="update(doc); $event.stopPropagation()" ng-show="editingDocId==doc.id">Update</button>
-            <button ng-click="delete(doc.id); $event.stopPropagation()" ng-show="editingDocId==doc.id">Delete</button>
-            <button ng-click="disableEditMode(doc); $event.stopPropagation()" ng-show="editingDocId==doc.id">Cancel</button>
-        </li>
-    </ul>
+    <div class="top_stage">
+        <h1>Demo App</h1>
+        <div>
+            <div class="input-append">
+                <input ng-model="newDoc.title" type="text"></input>
+                <button class="btn" ng-click="create(newDoc)">Add</button>
+            </div>
+        </div>
+    </div>
+    <div class="content center">
+        <accordion close-others="true">
+            <accordion-group ng-repeat="doc in documents" heading="{{doc.title}}" focus-input>
+                <input type="text" ng-model="doc.newTitle" value="{{doc.title}}"></input><br/>
+                <div class="btn-group">
+                    <button class="btn btn-default" ng-click="update(doc); $event.stopPropagation()">Update</button>
+                    <button class="btn btn-default" ng-click="delete(doc.id); $event.stopPropagation()">Delete</button>
+                </div>
+            </accordion-group>
+        </accordion>
+    </div>
 </div>

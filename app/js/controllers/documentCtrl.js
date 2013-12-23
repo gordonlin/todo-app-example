@@ -2,14 +2,12 @@ define(['underscore'], function() {
 	return ['$scope', '$http', function($scope, $http) {
 		// You can access the scope of the controller from here
         $scope.documents = [];
-        $scope.editingDocId;
         $scope.list = function(){
             $scope.documents = [];
-            $scope.editingDocId = null;
             $http({
                 method: 'POST',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-                url: 'http://localhost/rs1/visavis_valued_year_201309231300_fad04cabcr/api/search/ext/advancedresult?tid=0&who=admin&api_key=3d4875648f934d3b99cf18cb582a50eb&pi=0&ps=10',
+                url: 'http://localhost/rs1/visavis_valued_year_201309231300_fad04cabcr/api/search/ext/advancedresult?tid=0&who=admin&api_key=3d4875648f934d3b99cf18cb582a50eb&pi=0&ps=30',
                 data: "enablekeywordsynonyms=false&enabletagsynonyms=false&containchildfolder=false&containchildcategory=false&docclass=5&sort=_l_last_modified_datetime"
             }).success(function(data){
                 var docs = data.data[0];
@@ -56,6 +54,7 @@ define(['underscore'], function() {
                     data: "folder_id=3&documentdetailinfo="+JSON.stringify(draft)
                 }).success(function(){
                     $scope.list();
+                    doc.title='';
                 });
             });
         };
@@ -66,13 +65,6 @@ define(['underscore'], function() {
             }).success(function(){
                 $scope.list();
             })
-        };
-
-        $scope.enableEditMode = function(doc){
-            $scope.editingDocId = doc.id;
-        };
-        $scope.disableEditMode = function(doc){
-            $scope.editingDocId = $scope.editingDocId == doc.id ? null : doc.id;
         };
 		// because this has happened asynchroneusly we've missed
 		// Angular's initial call to $apply after the controller has been loaded

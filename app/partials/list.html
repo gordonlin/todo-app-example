@@ -1,20 +1,21 @@
-<div ng-controller="documentCtrl">
+<div ng-controller="todoController">
     <div class="top_stage">
         <h1>Demo App</h1>
         <div>
             <div class="input-append">
-                <input ng-model="newDoc.title" type="text"></input>
-                <button class="btn" ng-click="create(newDoc)">Add</button>
+                <input ng-model="newTodo.title" type="text"></input>
+                <button class="btn" ng-click="add(newTodo)">Add</button>
             </div>
         </div>
     </div>
     <div class="content center">
         <accordion close-others="true">
-            <accordion-group ng-repeat="doc in documents" heading="{{doc.title}}" focus-input>
-                <input type="text" ng-model="doc.newTitle" value="{{doc.title}}"></input><br/>
+            <accordion-group ng-repeat="todo in todos" heading="{{todo.completed ? todo.title + ' (Completed)' : todo.title}}" focus-input>
+                <input type="text" ng-model="todo.newTitle"></input><br/>
                 <div class="btn-group">
-                    <button class="btn btn-default" ng-click="update(doc); $event.stopPropagation()">Update</button>
-                    <button class="btn btn-default" ng-click="delete(doc.id); $event.stopPropagation()">Delete</button>
+                    <button class="btn btn-default" ng-click="update(todo); $event.stopPropagation()">Edit</button>
+                    <button class="btn btn-default" ng-click="setCompleted(todo); $event.stopPropagation()" ng-hide='todo.completed'>Completed</button>
+                    <button class="btn btn-default" ng-click="delete(todo.id); $event.stopPropagation()">Delete</button>
                 </div>
             </accordion-group>
         </accordion>

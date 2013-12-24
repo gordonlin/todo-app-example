@@ -1,20 +1,14 @@
 require.config({
 	paths: {
-		angular: '../../bower_components/angular/angular',
-		angularRoute: '../../bower_components/angular-route/angular-route',
-		angularMocks: '../../bower_components/angular-mocks/angular-mocks',
-		text: '../../bower_components/requirejs-text/text',
-		underscore: '../../bower_components/underscore-amd/underscore-min',
-		bootstrap: '../../bower_components/angular-bootstrap/ui-bootstrap-tpls.min',
-		plugins: 'plugins'
+		angular: '../libs/angular/angular',
+		angularRoute: '../libs/angular-route/angular-route',
+		text: '../libs/requirejs-text/text',
+		underscore: '../libs/underscore-amd/underscore-min',
+		bootstrap: '../libs/angular-bootstrap/ui-bootstrap-tpls.min'
 	},
 	shim: {
 		'angular' : {'exports' : 'angular'},
 		'angularRoute': ['angular'],
-		'angularMocks': {
-			deps:['angular'],
-			'exports':'angular.mock'
-		},
 		bootstrap: ['angular']
 	},
 	priority: [
@@ -29,12 +23,10 @@ require( [
 	'angular',
 	'app',
 	'routes',
-	'bootstrap',
-	'plugins'
+	'bootstrap'
 ], function(angular, app, routes) {
 	'use strict';
 	var $html = angular.element(document.getElementsByTagName('html')[0]);
-
 	angular.element().ready(function() {
 		angular.resumeBootstrap([app['name']]);
 	});

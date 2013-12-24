@@ -10,12 +10,12 @@ define([
 
 		// Declare app level module which depends on filters, and services
 		
-		return angular.module('myApp', [
+		return angular.module('demoApp', [
 			'ngRoute',
-			'myApp.controllers',
-			'myApp.filters',
-			'myApp.services',
-			'myApp.directives',
+			'demoApp.controllers',
+			'demoApp.filters',
+			'demoApp.services',
+			'demoApp.directives',
 			'ui.bootstrap'
 		]);
 });

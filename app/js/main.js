@@ -5,7 +5,8 @@ require.config({
 		angularMocks: '../../bower_components/angular-mocks/angular-mocks',
 		text: '../../bower_components/requirejs-text/text',
 		underscore: '../../bower_components/underscore-amd/underscore-min',
-		bootstrap: '../../bower_components/angular-bootstrap/ui-bootstrap-tpls.min'
+		bootstrap: '../../bower_components/angular-bootstrap/ui-bootstrap-tpls.min',
+		plugins: 'plugins'
 	},
 	shim: {
 		'angular' : {'exports' : 'angular'},
@@ -28,7 +29,8 @@ require( [
 	'angular',
 	'app',
 	'routes',
-	'bootstrap'
+	'bootstrap',
+	'plugins'
 ], function(angular, app, routes) {
 	'use strict';
 	var $html = angular.element(document.getElementsByTagName('html')[0]);

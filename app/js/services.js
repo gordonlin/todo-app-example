@@ -1,8 +1,9 @@
-define(['angular'], function (angular) {
+define(['angular','text!../../config.json'], function (angular,config) {
 	'use strict';
-    var baseUri = 'http://localhost/todo_backend/api/';
+
     /* Services */
     angular.module('demoApp.services', []).factory('todoService', function($http){
+        var baseUri = JSON.parse(config).baseUri;
         return {
             list: function(status){
                 return $http({

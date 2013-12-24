@@ -1,1 +1,1 @@
-請修改 app/js/services.js 中的 baseUri 參數
+請修改config.json中的baseUri參數

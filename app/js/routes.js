@@ -5,9 +5,6 @@ define(['angular', 'app'], function(angular, app) {
 		$routeProvider.when('/list', {
 			templateUrl: 'app/partials/list.html'
 		});
-		$routeProvider.when('/create', {
-			templateUrl: 'app/partials/edit.html'
-		});
 		$routeProvider.otherwise({redirectTo: '/list'});
 	}]);
 

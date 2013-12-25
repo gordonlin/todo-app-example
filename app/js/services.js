@@ -3,7 +3,8 @@ define(['angular','text!../../config.json'], function (angular,config) {
 
     /* Services */
     angular.module('demoApp.services', []).factory('todoService', function($http){
-        var baseUri = JSON.parse(config).baseUri;
+        var isApp = location.protocol === 'file:' && /ios|iphone|ipod|ipad|android/i.test(navigator.userAgent);
+        var baseUri = isApp ? JSON.parse(config).baseUriMobileDevice : JSON.parse(config).baseUriDesktop;
         return {
             list: function(status){
                 return $http({
@@ -21,14 +22,14 @@ define(['angular','text!../../config.json'], function (angular,config) {
             update: function(id, todo){
                 return $http({
                     method: 'PUT',
-                    url: baseUri + 'todos/'+id,
+                    url: baseUri + 'todos/' + id,
                     data: todo
                 });
             },
             delete: function(id){
                 return $http({
                     method: 'DELETE',
-                    url: baseUri + 'todos/'+id
+                    url: baseUri + 'todos/' + id
                 });
             }
         };

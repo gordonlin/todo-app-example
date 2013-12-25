@@ -1,3 +1,4 @@
 {
-    "baseUri": "http://localhost/todo_backend/api/"
+    "baseUriDesktop": "http://localhost/todo_backend/api/",
+    "baseUriMobileDevice": "http://192.168.15.233/todo_backend/api/"
 }

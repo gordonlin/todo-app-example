@@ -1,11 +1,10 @@
 <div ng-controller="todoController">
-    <div class="top_stage">
+    <div class="top-stage">
         <h1>Demo App</h1>
-        <div>
-            <div class="input-append">
-                <input ng-model="newTodo.title" type="text"></input>
-                <button class="btn" ng-click="add(newTodo)">Add</button>
-            </div>
+        <div class="input-append">
+            <input ng-model="newTodo.title" type="text" class="short-input"></input>
+            <button class="btn" ng-click="add(newTodo)">Add</button>
+            <button class="btn" camera>Camera</button>
         </div>
     </div>
     <div class="content center">
@@ -13,9 +12,9 @@
             <accordion-group ng-repeat="todo in todos" heading="{{todo.completed ? todo.title + ' (Completed)' : todo.title}}" focus-input>
                 <input type="text" ng-model="todo.newTitle"></input><br/>
                 <div class="btn-group">
-                    <button class="btn btn-default" ng-click="update(todo); $event.stopPropagation()">Save</button>
-                    <button class="btn btn-default" ng-click="setCompleted(todo); $event.stopPropagation()" ng-hide='todo.completed'>Completed</button>
-                    <button class="btn btn-default" ng-click="delete(todo.id); $event.stopPropagation()">Delete</button>
+                    <button class="btn" ng-click="update(todo); $event.stopPropagation()">Save</button>
+                    <button class="btn" ng-click="setCompleted(todo); $event.stopPropagation()" ng-hide='todo.completed'>Completed</button>
+                    <button class="btn" ng-click="delete(todo.id); $event.stopPropagation()">Delete</button>
                 </div>
             </accordion-group>
         </accordion>

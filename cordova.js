@@ -1,0 +1,1 @@
+//fake cordova.js

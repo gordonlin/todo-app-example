@@ -25,6 +25,7 @@ require( [
 	'bootstrap',
     'services/todoService',
     'directives/focusInputDirective',
+    'directives/cameraDirective',
     'controllers/todoController',
 ], function(angular, app, routes) {
 	'use strict';
